@@ -50,10 +50,11 @@ function PlayerSection({i, raw, score, updateScore}) {
     <label className="block text-gray-600 text-sm font-bold mb-2 text-lg" >
       {`Játékos ${i+1}`}
       </label>
-        <input className="bg-gray-100 text-gray-700 rounded-full border-none text-right text-xl"
+        <input className="bg-gray-200 text-gray-700 rounded-full border-none text-right text-xl pr-3"
           value={raw}
           onChange={function(e) {updateScore(i, e.target.value)}}
-          autoFocus={i==0}
+          autoFocus={i===0}
+          type="number"
         />
           <p className=" text-right text-gray-800 text-2xl">{score}</p>
             </div>
