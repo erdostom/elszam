@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 function App() {
-  let [scores, changeScores] = useState([null, null, null, null])
+  let [scores, changeScores] = useState([``, ``, ``, ``])
+  const resultRegex = /^-?[0-9]+$/
 
   function updateScore(i, raw) {
     let scorez = [...scores]
@@ -10,23 +11,23 @@ function App() {
   }
 
   const calculatedScores = scores.map(targetScore => {
-    if (targetScore !== null) {
+    if (targetScore.match(resultRegex)) {
     return scores.reduce((memo, val) => {
-      if (val !== null) {
+      if (val.match(resultRegex)) {
       return memo + Number(targetScore) - Number(val)
       } else {
         return memo
       }
       },0)
     } else {
-      return null
+      return ``
     }
   })
 
   return (
-    <div className="w-full max-w-lg mx-auto">
-      <h1 className="mt-4 font-bold text-gray-900  text-4xl text-center">Ulti Elszámoló</h1>
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div className="w-full max-w-sm mx-auto">
+      <h1 className="mt-4 font-bold text-gray-900 text-4xl text-center">Ulti Elszámoló</h1>
+        <form className="bg-white shadow-2xl rounded mx-2 px-1 pt-2 pb-2 mb-4">
           {scores.map((raw, i) => <PlayerSection
             i={i}
             raw={raw}
@@ -35,9 +36,9 @@ function App() {
             updateScore={updateScore}
           />)}
         </form>
-        <span className="text-gray-500 text-xs ">
+        <p className="text-gray-500 text-xs text-center">
           made with &lt;3 by erdostom
-        </span>
+        </p>
       </div>
   );
 }
@@ -52,6 +53,7 @@ function PlayerSection({i, raw, score, updateScore}) {
         <input className="bg-gray-100 text-gray-700 rounded-full border-none text-right text-xl"
           value={raw}
           onChange={function(e) {updateScore(i, e.target.value)}}
+          autoFocus={i==0}
         />
           <p className=" text-right text-gray-800 text-2xl">{score}</p>
             </div>
