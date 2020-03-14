@@ -2,7 +2,7 @@
   "name": "dashy",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://erdostom.github.io/filenamecleaner",
+  "homepage": "http://ulti.tamaserdos.com/",
   "dependencies": {
     "@babel/core": "7.8.4",
     "@svgr/webpack": "4.3.3",
